@@ -21,10 +21,12 @@ class FirstViewController: UIViewController {
         tableView.dataSource = self
                 
         searchController = UISearchController(searchResultsController: nil)
-        navigationItem.searchController = searchController
-
-        // This leads to the bug
         searchController.hidesNavigationBarDuringPresentation = false
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+        
+        // This leads to the bug
+        
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(leftTapped))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(rightTapped))
